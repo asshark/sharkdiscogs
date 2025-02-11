@@ -105,21 +105,14 @@ SharkDiscogs.prototype.lookupArtist = function(query) {
 }
 
 SharkDiscogs.prototype.lookupArtistReleases = function(query) {
-  //log(query)
-  var uri = "https://api.discogs.com/" + "artists/" + query + "/releases?key=" + this.apiKey + "&secret=" + this.apiSecret
+  var uri = "https://api.discogs.com/" + "artists/" + query + "/releases?key=" + this.apiKey + "&secret=" + this.apiSecret;
   var resultJson = http().get(uri);
   var result = JSON.parse(resultJson.body);
-  //log(resultJson.body)
   if (result.releases !== undefined)
-	{
-	        result['releases'] = result.releases.map(function(e) { 
-				//log(e.title)
-	//		if(e.role === "Main")  
+  {
+  	result['releases'] = result.releases.map(function(e) { 
 				return e.year + " - " + e.title + " - " + e.role  + " / " + e.type + " / " e.role; 
-	//		else
-	//			return "";
-
 			}).join("\n");
-	} 
+  } 
   return result;  
 }
