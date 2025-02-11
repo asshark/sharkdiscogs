@@ -6,7 +6,7 @@ The data source for obtaining information from discogs.com.
 Consumer key and Consumer secret can be obtained by this link : https://www.discogs.com/settings/developers
 More info about Discogs API see here: https://www.discogs.com/developers
 @example 
-var discogs = new Discogs("Consumer key" ,"Consumer secret" , "release" );
+var discogs = new SharkDiscogs("Consumer key" ,"Consumer secret" , "release" );
 var r = discogs.search(query);
 result( r , function(id) { return discogs.extra(id);});
 */
@@ -16,6 +16,9 @@ function SharkDiscogs (apiKey , apiSecret, type) {
     this.type = type;
 }
 
+function removeDiscogsSuffix(str) {
+return str.replace(/\s\(\d+\)$/, '');
+}
 
 /**
 Issue a search query to Discogs database.
