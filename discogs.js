@@ -78,7 +78,7 @@ SharkDiscogs.prototype.lookup = function(id) {
     if (result.tracklist !== undefined)
 	{  
 		result['trackCount'] = result.tracklist.length;
-	        result['tracklist'] = result.tracklist.map(function(e) { return e.position + ". " + e.title + " " + e.duration; }).join("\n");
+	        result['tracklist'] = result.tracklist.map(function(e) { return e.position + ". " + e.title + " : " + e.duration; }).join("\n");
 	}     
     if (result.styles !== undefined)  
         result['styles'] = result.styles.join();     
@@ -111,7 +111,7 @@ SharkDiscogs.prototype.lookupArtistReleases = function(query) {
   if (result.releases !== undefined)
   {
   	result['releases'] = result.releases.map(function(e) { 
-				return e.year + " - " + e.title + " - " + e.role  + " / " + e.type + " / " e.role; 
+				return e.year + " - " + e.title + " - " + e.role  + " / " + e.type; 
 			}).join("\n");
   } 
   return result;  
